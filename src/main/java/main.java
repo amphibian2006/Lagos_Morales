@@ -1,5 +1,4 @@
 import java.util.NoSuchElementException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
@@ -17,11 +16,16 @@ public class main {
             do {
                 System.out.println("¿Cuantos dias quiere ver? ");
                 n = leer.nextInt();
+            }while (n < 2 || n > 31);
                 double[][] sensorSismos = new double[n][(int) 24];
                 lecturaSismos(sensorSismos);
                 mostrarSismos(sensorSismos);
+                try{
                 Menu(sensorSismos);
-            } while (n < 2 || n > 31);
+                }catch (Exception e){
+                    System.out.println("Valor no valido");
+                }
+
     }
 
     private static void Menu(double[][] sensorSismos) {
@@ -77,18 +81,20 @@ public class main {
 
     public static void MaxSismo(double[][] sensorSismos) {
         double Max=0;
-        int dia;
-        int hora;
+        int dia=0;
+        int hora=0;
         for(int i=0;i<sensorSismos.length;i++ ){
             for (int j = 0; j < sensorSismos[i].length; j++) {
                 if(sensorSismos[i][j]>Max){
                     Max=sensorSismos[i][j];
-                    if(Max==0){
-
+                    if(Max==sensorSismos[i][j]){
+                      dia=i+1;
+                      hora=j+1;
                     }
                 }
                  }
             }
+        System.out.println("El dia "+dia+" a las: "+hora+":00");
         System.out.println("El mayor sismo es: "+Max);
         }
 
