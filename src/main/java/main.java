@@ -25,12 +25,13 @@ public class main {
         System.out.println("[2] Mostrar sismos ≥ 4.0 grados Richter");
         System.out.println("[3] Reiniciar el arreglo con nuevos valores");
         System.out.println("[4] Salir");
+        eleccion=leer.nextInt();
         switch (eleccion){
             case 1:
                 MaxSismo(sensorSismos);
                 break;
             case 2:
-
+                MayoresSismos(sensorSismos);
                 break;
             case 3:
                 lecturaSismos(sensorSismos);
@@ -40,11 +41,17 @@ public class main {
         }
     }
 
+    private static void MayoresSismos(double[][] sensorSismos) {
+
+    }
+
     public static void MaxSismo(double[][] sensorSismos) {
         double Max=0;
         for(int i=0;i<sensorSismos.length;i++ ){
             for (int j = 0; j < sensorSismos[i].length; j++) {
-                 Max=Math.max(sensorSismos[i][j],sensorSismos[(i+1)][j]);
+                if(sensorSismos[i][j]>Max){
+                    Max=sensorSismos[i][j];
+                }
                  }
             }
         System.out.println("El mayor sismo es: "+Max);
