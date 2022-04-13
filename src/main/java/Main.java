@@ -42,6 +42,7 @@ public class Main {
 
     public static void sismosMayores(double[][] sensorSismos) {
         int[] sismosPorDia = contarSismosMayores(sensorSismos);
+        mostrarSismosMayores(sismosPorDia);
     }
 
     public static int[] contarSismosMayores(double[][] sensorSismos) {
@@ -58,5 +59,10 @@ public class Main {
         return sismosPorDia;
     }
 
+    public static void mostrarSismosMayores(int[] sismosPorDia) {
+        for (int i = 0; i < sismosPorDia.length; i++) {
+            System.out.println("Día "+(i+1)+" = "+sismosPorDia[i]+" veces");
+        }
+    }
 
 }
