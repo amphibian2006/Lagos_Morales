@@ -1,16 +1,24 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         double[][] sensorSismos = matrizSismos();
         lecturaSismos(sensorSismos);
         menuSismos(sensorSismos);
-
-
-
-
     }
 
     public static double[][] matrizSismos() {
-        return new double[10][24];
+        Scanner leer = new Scanner(System.in);
+        int dias = 0;
+        try{
+            do{
+                System.out.println("Cuantos días: ");
+                dias = leer.nextInt();
+            }while (dias < 2 || dias > 31);
+        }catch (Exception e){
+            System.out.println("Ingrese un número válido");
+        }
+        return new double[dias][24];
     }
 
     public static void lecturaSismos(double[][] sensorSismos) {
@@ -37,7 +45,21 @@ public class Main {
     }
 
     public static void elegirOpcion(double[][] sensorSismos) {
-        sismosMayores(sensorSismos);
+        int eleccion=0;
+        switch (eleccion){
+            case 1:
+                //MaxSismo(sensorSismos);
+                break;
+            case 2:
+                sismosMayores(sensorSismos);
+                break;
+            case 3:
+                lecturaSismos(sensorSismos);
+                break;
+            case 4:
+                break;
+        }
+
     }
 
     public static void sismosMayores(double[][] sensorSismos) {
